@@ -1,0 +1,19 @@
+h2 {
+    animation: text-gradient 5s infinite;
+    display: inline-block;
+}
+@keyframes text-gradient {
+    0% {
+        color: rgb(244 114 182);
+    }
+    20% {
+        color: rgb(180, 64, 190);
+    }
+    80% {
+        color: rgb(182, 59, 114);
+    }
+
+    100% {
+        color: rgb(180, 64, 190);
+    }
+}
