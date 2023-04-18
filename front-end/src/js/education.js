@@ -9,7 +9,7 @@ import sendBack from "../assets/back.png";
 import { Configuration, OpenAIApi } from "openai";
 const openai = new OpenAIApi(
     new Configuration({
-        apiKey: "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",
+        apiKey: "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",
     })
 );
 

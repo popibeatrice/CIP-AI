@@ -9,7 +9,7 @@ import sendBack from "../assets/back.png";
 import { Configuration, OpenAIApi } from "openai";
 const openai = new OpenAIApi(
     new Configuration({
-        apiKey: "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",
+        apiKey: "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",
     })
 );
 
@@ -60,6 +60,7 @@ const CreateResponse = (res, input) => {
     const Table = document.createElement("div");
     Table.classList.add(
         "max-h-[200px]",
+        "w-[50vw]",
         "max-w-2xl",
         "overflow-x-scroll",
         "overflow-y-scroll"
