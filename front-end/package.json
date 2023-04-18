@@ -16,6 +16,7 @@
         "@babel/preset-env": "^7.21.4",
         "@html-eslint/eslint-plugin": "^0.17.2",
         "@html-eslint/parser": "^0.17.1",
+        "@types/scrollreveal": "^0.0.8",
         "babel-loader": "^9.1.2",
         "copy-webpack-plugin": "^10.1.0",
         "css-loader": "^6.5.1",
@@ -38,10 +39,13 @@
         "webpack-node-externals": "^3.0.0"
     },
     "dependencies": {
+        "aos": "^3.0.0-beta.6",
         "autoprefixer": "^10.4.13",
+        "dotenv": "^16.0.3",
         "firebase": "^9.18.0",
         "openai": "^3.2.1",
         "particles.js": "^2.0.0",
+        "scrollreveal": "^4.0.9",
         "stats": "^1.0.0"
     }
 }

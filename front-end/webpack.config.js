@@ -6,9 +6,9 @@ module.exports = {
     entry: {
         index: "./src/js/index.js",
         education: "./src/js/education.js",
-        // medicina: "./src/js/medicina.js",
-        // culinar: "./src/js/culinar.js",
-        // art: "./src/js/art.js",
+        medicina: "./src/js/medicina.js",
+        tabelas: "./src/js/tabelas.js",
+        art: "./src/js/art.js",
     },
     mode: "development",
     devServer: {
@@ -65,24 +65,24 @@ module.exports = {
             template: "src/html/education.html",
             chunks: ["education"],
         }),
-        // new HtmlWebpackPlugin({
-        //     // Also generate a test.html
-        //     filename: "medicina.html",
-        //     template: "src/html/medicina.html",
-        //     chunks: ["medicina"],
-        // }),
-        // new HtmlWebpackPlugin({
-        //     // Also generate a test.html
-        //     filename: "culinar.html",
-        //     template: "src/html/culinar.html",
-        //     chunks: ["culinar"],
-        // }),
-        // new HtmlWebpackPlugin({
-        //     // Also generate a test.html
-        //     filename: "art.html",
-        //     template: "src/html/art.html",
-        //     chunks: ["art"],
-        // }),
+        new HtmlWebpackPlugin({
+            // Also generate a test.html
+            filename: "medicina.html",
+            template: "src/html/medicina.html",
+            chunks: ["medicina"],
+        }),
+        new HtmlWebpackPlugin({
+            // Also generate a test.html
+            filename: "tabelas.html",
+            template: "src/html/tabelas.html",
+            chunks: ["tabelas"],
+        }),
+        new HtmlWebpackPlugin({
+            // Also generate a test.html
+            filename: "art.html",
+            template: "src/html/art.html",
+            chunks: ["art"],
+        }),
     ],
     output: {
         filename: "[name].bundle.js",

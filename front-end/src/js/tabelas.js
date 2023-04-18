@@ -1,5 +1,5 @@
 import "../styles/index.css";
-import "../styles/education.css";
+import "../styles/tabelas.css";
 import sendBack from "../assets/back.png";
 
 ///configurations
@@ -57,9 +57,14 @@ const CreateResponse = (res, input) => {
         cartonas.classList.remove("hidden");
         introductiveText.classList.remove("hidden");
     });
-    const span = document.createElement("span");
-    span.classList.add("max-h-[200px]", "overflow-y-scroll");
-    span.textContent = res;
+    const Table = document.createElement("div");
+    Table.classList.add(
+        "max-h-[200px]",
+        "max-w-2xl",
+        "overflow-x-scroll",
+        "overflow-y-scroll"
+    );
+    Table.innerHTML = res;
     const Regenbutton = document.createElement("button");
     Regenbutton.textContent = "Regenereaza raspunsul";
     Regenbutton.classList.add(
@@ -86,19 +91,19 @@ const CreateResponse = (res, input) => {
                 messages: [
                     {
                         role: "user",
-                        content: `You are an all subject teacher and you do not have any personal life outside the collage and you do not posses any other knowledge about investment and politics. You need to only respond to questions that are appropriate for school education. Your audience are your students so do not forget to not respond with advice about personal life, investment or politics. If the question you get has one of those topics or does not have an educational scope only respond with "Din motive educationale nu iti pot da un raspuns la aceasta intrebare" and only this. If the question is appropriate respond as compact and formal as possible and maybe bring a fun example or an interesting fact related to the question's topic so the students can understand better. Your question is the following but do not forget what we talked about personal life problems or advice, questions that do not fall into the category of education, politics and investments, and respond in Romanian and Romanian only, even that the question is in another language : ${input}`,
+                        content: `You are a table generator and a table generator only. You will get questions that ask you to generate a table and you will do so without saying anything additional. If the question does NOT ask you to GENERATE A TABLE then answer only with "Nu va pot genera un tabel in urma cerintei dumneavoastra" and nothing more. When you generate the table generate it only in html format, always starting with the table tag, and do not say anything more, not a single character added. That being said this is you question, respond in Romanian and Romanian only even that the question is in another language and always take as keywords "generate me a table" if it does not make any sense then answer with "Nu va pot genera un tabel in urma cerintei dumneavoastra" :  ${input}`,
                     },
                 ],
                 temperature: 0.5,
             })
             .then((result) => {
-                span.textContent = result.data.choices[0].message.content;
+                Table.innerHTML = result.data.choices[0].message.content;
                 section.classList.remove("hidden");
                 loading.classList.add("hidden");
             });
     });
     section.appendChild(sendBackBtn);
-    section.appendChild(span);
+    section.appendChild(Table);
     section.appendChild(Regenbutton);
     body.appendChild(section);
     return Regenbutton;
@@ -117,7 +122,7 @@ form.addEventListener("submit", (e) => {
             messages: [
                 {
                     role: "user",
-                    content: `You are a all subject teacher and you do not have any personal life outside the collage and you do not posses any other knowledge about investment and politics. You need to respond only to questions that are appropriate for school education. Your audience are your students so do not forget to not respond with advice about personal life, investment or politics. If the question you get has one of those topics or does not have an educational scope respond only with "Din motive educationale nu iti pot da un raspuns la aceasta intrebare" and only this. If the question is appropriate respond as compact and formal as possible and maybe bring a fun example or an interesting fact related to the question's topic so the students can understand better. Your question is the following but do not forget what we talked about personal life problems or advice, questions that do not fall into the category of education, politics and investments, and respond in Romanian and Romanian only, even that the question is in another language : ${inputValue}`,
+                    content: `You are a table generator and a table generator only. You will get questions that ask you to generate a table and you will do so without saying anything additional. If the question does NOT ask you to GENERATE A TABLE then answer only with "Nu va pot genera un tabel in urma cerintei dumneavoastra" and nothing more. When you generate the table generate it only in html format, always starting with the table tag, and do not say anything more, not a single character added. That being said this is you question, respond in Romanian and Romanian only even that the question is in another language and always take as keywords "generate me a table" if it does not make any sense then answer with "Nu va pot genera un tabel in urma cerintei dumneavoastra" : ${inputValue}`,
                 },
             ],
             temperature: 0.5,

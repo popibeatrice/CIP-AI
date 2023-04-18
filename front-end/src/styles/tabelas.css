@@ -28,7 +28,24 @@ h2 {
         color: rgb(180, 64, 190);
     }
 }
-/* loading */
+/* tabel */
+table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: rgb(163, 56, 111);
+    color: white;
+}
 
 /* -- Loading thingy --*/
 .loading-dot {
