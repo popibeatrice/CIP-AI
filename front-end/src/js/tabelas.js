@@ -1,18 +1,17 @@
 import "../styles/index.css";
 import "../styles/tabelas.css";
 import sendBack from "../assets/back.png";
+const axios = require("axios");
 
-///configurations
-// import { config } from "dotenv";
-// config();
-
-import { Configuration, OpenAIApi } from "openai";
-const openai = new OpenAIApi(
-    new Configuration({
-        apiKey: "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",
-    })
-);
-
+const popCont = document.querySelector("#popup");
+const Popup = `
+	<div class="rectangle fixed z-30 right-0 bottom-10">
+		<div class="notification-text">
+			<div class="material-icons text-2xl mr-2">&#9432;</div>
+			<span id = "popAddText"></span>
+		</div>
+	</div>
+`;
 ///variables
 const form = document.querySelector("form");
 const body = document.querySelector("body");
@@ -26,7 +25,7 @@ loading.classList.add("hidden");
 
 //functions
 
-const CreateResponse = (res, input) => {
+const CreateResponse = (res) => {
     const section = document.createElement("section");
     section.classList.add(
         "relative",
@@ -83,25 +82,19 @@ const CreateResponse = (res, input) => {
     );
     Regenbutton.setAttribute("id", "regenereaza_btn");
     Regenbutton.type = "button";
-    Regenbutton.addEventListener("click", () => {
+    Regenbutton.addEventListener("click", async () => {
         loading.classList.remove("hidden");
         section.classList.add("hidden");
-        openai
-            .createChatCompletion({
-                model: "gpt-3.5-turbo",
-                messages: [
-                    {
-                        role: "user",
-                        content: `You are a table generator and a table generator only. You will get questions that ask you to generate a table and you will do so without saying anything additional. If the question does NOT ask you to GENERATE A TABLE then answer only with "Nu va pot genera un tabel in urma cerintei dumneavoastra" and nothing more. When you generate the table generate it only in html format, always starting with the table tag, and do not say anything more, not a single character added. That being said this is you question, respond in Romanian and Romanian only even that the question is in another language and always take as keywords "generate me a table" if it does not make any sense then answer with "Nu va pot genera un tabel in urma cerintei dumneavoastra" :  ${input}`,
-                    },
-                ],
-                temperature: 0.5,
-            })
-            .then((result) => {
-                Table.innerHTML = result.data.choices[0].message.content;
-                section.classList.remove("hidden");
-                loading.classList.add("hidden");
+        try {
+            const response = await axios.post("/tabel", {
+                inputValue: form.tabelas_input.value,
             });
+            Table.innerHTML = response.data;
+            section.classList.remove("hidden");
+            loading.classList.add("hidden");
+        } catch (error) {
+            console.log(error);
+        }
     });
     section.appendChild(sendBackBtn);
     section.appendChild(Table);
@@ -111,29 +104,55 @@ const CreateResponse = (res, input) => {
 };
 
 ///functionality
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    let inputValue = form.education_input.value;
     cartonas.classList.add("hidden");
     introductiveText.classList.add("hidden");
     loading.classList.remove("hidden");
-    openai
-        .createChatCompletion({
-            model: "gpt-3.5-turbo",
-            messages: [
-                {
-                    role: "user",
-                    content: `You are a table generator and a table generator only. You will get questions that ask you to generate a table and you will do so without saying anything additional. If the question does NOT ask you to GENERATE A TABLE then answer only with "Nu va pot genera un tabel in urma cerintei dumneavoastra" and nothing more. When you generate the table generate it only in html format, always starting with the table tag, and do not say anything more, not a single character added. That being said this is you question, respond in Romanian and Romanian only even that the question is in another language and always take as keywords "generate me a table" if it does not make any sense then answer with "Nu va pot genera un tabel in urma cerintei dumneavoastra" : ${inputValue}`,
-                },
-            ],
-            temperature: 0.5,
-        })
-        .then((result) => {
-            console.log(result.data.choices[0].message.content);
-            loading.classList.add("hidden");
-            CreateResponse(result.data.choices[0].message.content, inputValue);
+    try {
+        const response = await axios.post("/tabel", {
+            inputValue: form.tabelas_input.value,
         });
-    form.reset();
+        loading.classList.add("hidden");
+        CreateResponse(response.data);
+    } catch (error) {
+        console.log(error);
+        cartonas.classList.remove("hidden");
+        introductiveText.classList.remove("hidden");
+        loading.classList.add("hidden");
+        console.log(error);
+        console.log("hello");
+        loading.classList.add("hidden");
+        popCont.innerHTML = Popup;
+        const popColor = document.querySelector(".rectangle");
+        popColor.style.backgroundColor = "red";
+        popCont.style.opacity = "0.8";
+        const Text = document.querySelector("#popAddText");
+        Text.textContent = "Va rugam sa reincercati in 2 minute";
+        popCont.classList.add("duration-500");
+        setTimeout(() => {
+            popCont.style.opacity = ".6";
+        }, 2000);
+        setTimeout(() => {
+            popCont.style.opacity = ".4";
+        }, 2100);
+        setTimeout(() => {
+            popCont.style.opacity = ".2";
+        }, 2200);
+        setTimeout(() => {
+            popCont.style.opacity = "0";
+        }, 2300);
+    }
 });
 
-// implementation of chat gpt (front end)
+const blob = document.getElementById("blob");
+document.body.onpointermove = (event) => {
+    const { clientX, clientY } = event;
+    blob.animate(
+        {
+            left: `${clientX}px`,
+            top: `${clientY}px`,
+        },
+        { duration: 3000, fill: "forwards" }
+    );
+};

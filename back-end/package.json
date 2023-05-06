@@ -1,7 +1,7 @@
 {
     "main": "app.js",
     "scripts": {
-        "build": "node app.js"
+        "build": "nodemon app.js"
     },
     "dependencies": {
         "dotenv": "^16.0.3",

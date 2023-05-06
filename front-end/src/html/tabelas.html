@@ -12,13 +12,17 @@
     <body
         class="flex min-h-full flex-col items-center justify-center gap-9 bg-zinc-900 font-assistant"
     >
+        <div id="blob"></div>
+        <div id="blur"></div>
         <h1
             id="introductive_text"
-            class="mt-12 text-center font-rajdhani text-3xl text-gray-200"
+            class="z-10 mt-12 text-center font-rajdhani text-3xl text-gray-200"
         >
             Vezi cum Inteligenta artificiala poate genera TABELE
         </h1>
-        <div class="flex flex-row-reverse items-center justify-center gap-10">
+        <div
+            class="z-10 flex flex-row-reverse items-center justify-center gap-10"
+        >
             <section
                 id="cartonas"
                 class="m-6 flex max-w-5xl flex-col items-center justify-center gap-10 rounded-lg bg-gray-200 p-10 text-lg font-semibold text-zinc-900 shadow-md shadow-pink-400 sm:p-20 lg:flex-row-reverse"
@@ -67,7 +71,7 @@
                         <input
                             class="w-full border-b-2 border-pink-400 bg-gray-200 text-lg outline-none lg:self-start"
                             type="text"
-                            id="education_input"
+                            id="tabelas_input"
                             placeholder="Your question"
                         />
                         <input
@@ -80,5 +84,9 @@
                 </div>
             </section>
         </div>
+        <div
+            id="popup"
+            class="pointer-events-none fixed right-0 flex h-screen items-end justify-center"
+        ></div>
     </body>
 </html>

@@ -4,21 +4,15 @@ import sendBack from "../assets/back.png";
 import downloadImage from "../assets/download.png";
 const axios = require("axios");
 
-///configurations
-// import { config } from "dotenv";
-// config();
-
-import { Configuration, OpenAIApi } from "openai";
-const PhotoGenerator = new OpenAIApi(
-    new Configuration({
-        apiKey: "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",
-    })
-);
-const Translation = new OpenAIApi(
-    new Configuration({
-        apiKey: "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",
-    })
-);
+const popCont = document.querySelector("#popup");
+const Popup = `
+	<div class="rectangle fixed z-30 right-0 bottom-10">
+		<div class="notification-text">
+			<div class="material-icons text-2xl mr-2">&#9432;</div>
+			<span id = "popAddText"></span>
+		</div>
+	</div>
+`;
 
 ///variables
 const form = document.querySelector("form");
@@ -33,15 +27,7 @@ loading.classList.add("hidden");
 
 //functions
 
-const result = async (file_path) => {
-    await axios({
-        url: `${file_path}`,
-        method: "GET",
-        responseType: "blob",
-    });
-};
-
-const CreateResponse = async (res, input) => {
+const CreateResponse = async (res) => {
     const section = document.createElement("section");
     section.classList.add(
         "relative",
@@ -180,12 +166,12 @@ const CreateResponse = async (res, input) => {
     });
     let promise2 = new Promise(function (resolve, reject) {
         try {
-            const imgload1 = new Image();
-            imgload1.onload = function () {
+            const imgload2 = new Image();
+            imgload2.onload = function () {
                 secondImg.src = this.src;
                 resolve();
             };
-            imgload1.src = `${res.data[1].url}`;
+            imgload2.src = `${res.data[1].url}`;
             download2.href = `${res.data[1].url}`;
             download2.download = `${res.data[1].url}`;
         } catch (error) {
@@ -194,17 +180,14 @@ const CreateResponse = async (res, input) => {
     });
     let promise3 = new Promise(function (resolve, reject) {
         try {
-            const imgload1 = new Image();
-            imgload1.onload = function () {
+            const imgload3 = new Image();
+            imgload3.onload = function () {
                 thirdImg.src = this.src;
                 resolve();
             };
-            imgload1.src = `${res.data[2].url}`;
-            result(`${res.data[2].url}`).then((cred) => {
-                download3.href = window.URL.createObjectURL(
-                    new Blob([cred.data])
-                );
-            });
+            imgload3.src = `${res.data[2].url}`;
+            download3.href = `${res.data[2].url}`;
+            download3.download = `${res.data[2].url}`;
         } catch (error) {
             reject(error);
         }
@@ -213,42 +196,8 @@ const CreateResponse = async (res, input) => {
     container.appendChild(container1);
     container.appendChild(container2);
     container.appendChild(container3);
-    const Regenbutton = document.createElement("button");
-    Regenbutton.textContent = "Regenereaza raspunsul";
-    Regenbutton.classList.add(
-        "cursor-pointer",
-        "rounded-md",
-        "border-2",
-        "border-pink-400",
-        "py-1",
-        "px-2",
-        "font-semibold",
-        "text-pink-400",
-        "duration-300",
-        "hover:bg-pink-400",
-        "hover:text-gray-200"
-    );
-    Regenbutton.setAttribute("id", "regenereaza_btn");
-    Regenbutton.type = "button";
-    Regenbutton.addEventListener("click", async () => {
-        loading.classList.remove("hidden");
-        section.classList.add("hidden");
-        const response = await PhotoGenerator.createImage({
-            prompt: `${input}`,
-            n: 3,
-            size: "512x512",
-        });
-
-        console.log(response);
-        firstImg["src"] = response.data.data[0].url;
-        secondImg["src"] = response.data.data[1].url;
-        thirdImg["src"] = response.data.data[2].url;
-        section.classList.remove("hidden");
-        loading.classList.add("hidden");
-    });
     section.appendChild(sendBackBtn);
     section.appendChild(container);
-    section.appendChild(Regenbutton);
     body.appendChild(section);
     loading.classList.add("hidden");
 };
@@ -256,34 +205,52 @@ const CreateResponse = async (res, input) => {
 ///functionality
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    let inputValue = form.education_input.value;
-    cartonas.classList.add("hidden");
-    introductiveText.classList.add("hidden");
-    loading.classList.remove("hidden");
-    const englishPrompt = await Translation.createChatCompletion({
-        model: "gpt-3.5-turbo",
-        messages: [
-            {
-                role: "user",
-                content: `Translate this in english and do not respond with nothing more than the translation and translation only, not enev a character: ${inputValue}`,
-            },
-        ],
-        temperature: 0.5,
-    });
-    console.log(englishPrompt.data.choices[0].message.content);
-    PhotoGenerator.createImage({
-        prompt: `${englishPrompt.data.choices[0].message.content}`,
-        n: 3,
-        size: "512x512",
-    }).then((result) => {
-        console.log(result);
-        console.log(result.data.data[0].url);
-        CreateResponse(
-            result.data,
-            englishPrompt.data.choices[0].message.content
-        );
-    });
-    form.reset();
+    try {
+        cartonas.classList.add("hidden");
+        introductiveText.classList.add("hidden");
+        loading.classList.remove("hidden");
+        const response = await axios.post("/arta", {
+            inputValue: form.art_input.value,
+        });
+        console.log(response);
+        CreateResponse(response.data);
+    } catch (error) {
+        cartonas.classList.remove("hidden");
+        introductiveText.classList.remove("hidden");
+        loading.classList.add("hidden");
+        console.log(error);
+        console.log("hello");
+        loading.classList.add("hidden");
+        popCont.innerHTML = Popup;
+        const popColor = document.querySelector(".rectangle");
+        popColor.style.backgroundColor = "red";
+        popCont.style.opacity = "0.8";
+        const Text = document.querySelector("#popAddText");
+        Text.textContent = "Va rugam sa reincercati in 2 minute";
+        popCont.classList.add("duration-500");
+        setTimeout(() => {
+            popCont.style.opacity = ".6";
+        }, 2000);
+        setTimeout(() => {
+            popCont.style.opacity = ".4";
+        }, 2100);
+        setTimeout(() => {
+            popCont.style.opacity = ".2";
+        }, 2200);
+        setTimeout(() => {
+            popCont.style.opacity = "0";
+        }, 2300);
+    }
 });
 
-// implementation of chat gpt (front end)
+const blob = document.getElementById("blob");
+document.body.onpointermove = (event) => {
+    const { clientX, clientY } = event;
+    blob.animate(
+        {
+            left: `${clientX}px`,
+            top: `${clientY}px`,
+        },
+        { duration: 3000, fill: "forwards" }
+    );
+};

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="overflow-x-hidden">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,7 +10,8 @@
         <title>Document</title>
     </head>
     <body class="bg-zinc-900 font-assistant">
-        <div id="particles-js" class="z-10 bg-zinc-900"></div>
+        <div id="blob"></div>
+        <div id="blur"></div>
         <header
             class="absolute z-40 flex w-full items-center justify-between p-6 font-rajdhani text-xl font-semibold text-gray-200"
         >
@@ -88,17 +89,16 @@
                 TABELE
             </a>
         </div>
-
         <!-- prima sectiune -->
         <section
-            class="relative flex min-h-screen items-center justify-center bg-zinc-900"
+            class="first_section flex min-h-screen items-center justify-center bg-zinc-900"
         >
             <div
                 class="m-4 flex flex-col flex-wrap items-center justify-center"
             >
                 <h1
                     id="title"
-                    class="z-20 text-center font-rajdhani text-3xl text-white sm:text-5xl"
+                    class="z-20 text-center font-rajdhani text-4xl font-semibold text-white sm:text-5xl"
                 >
                     INTELIGENTA ARTIFICIALA
                 </h1>
@@ -110,10 +110,9 @@
                 </div>
             </div>
         </section>
-
         <!-- second section -->
         <section
-            class="flex min-h-screen flex-col items-center justify-center gap-10 overflow-hidden bg-zinc-900 sm:gap-12"
+            class="z-10 flex min-h-screen flex-col items-center justify-center gap-10 overflow-hidden bg-zinc-900 sm:gap-12"
             id="second-section"
         >
             <h2
@@ -216,10 +215,232 @@
                 </div>
             </div>
         </section>
+        <!-- try  -->
+
+        <section class="carousel z-10 mt-20 p-16">
+            <h2 class="text-center font-rajdhani text-4xl font-semibold">
+                Exemple de inteligenta artificiala
+            </h2>
+            <div class="carousel-item">
+                <div class="carousel-box">
+                    <div class="title">
+                        <h4 class="font-semibold">Siri</h4>
+                        <p class="text-lg text-gray-300">
+                            Asistentul virtual Apple, utilizează procesarea
+                            limbajului natural și învățarea automată pentru a
+                            înțelege și răspunde comenzilor vocale
+                        </p>
+                    </div>
+
+                    <div class="num">01</div>
+                    <img src="../assets/siri_og.png" alt="" />
+                    <div
+                        class="absolute inset-0 h-full w-full bg-black opacity-20"
+                    ></div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="carousel-box">
+                    <div class="title">
+                        <h4 class="font-semibold">Alexa</h4>
+                        <p class="text-lg text-gray-300">
+                            Asistentul virtual Amazon care poate răspunde
+                            comenzilor vocale și poate efectua diverse sarcini,
+                            cum ar fi redarea muzicii sau controlul
+                            dispozitivelor inteligente de acasă.
+                        </p>
+                    </div>
+                    <div class="num">02</div>
+                    <img
+                        src="../assets/04RGOyq0dBm4JHMACrd1Btt-2..v1655912381.jpg"
+                        class=""
+                        alt=""
+                    />
+                    <div
+                        class="absolute inset-0 h-full w-full bg-black opacity-20"
+                    ></div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="carousel-box">
+                    <div class="title">
+                        <h4 class="font-semibold">Tesla Pilot</h4>
+                        <p class="text-lg text-zinc-300">
+                            Un sistem alimentat de IA care permite mașinilor
+                            Tesla să conducă autonom și să evite accidentele.
+                        </p>
+                    </div>
+                    <div class="num">03</div>
+                    <img
+                        src="../assets/carter-baran-t5mV5TBzu4s-unsplash.jpg"
+                        class=""
+                        alt=""
+                    />
+                    <div
+                        class="absolute inset-0 h-full w-full bg-black opacity-20"
+                    ></div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="carousel-box">
+                    <div class="title">
+                        <h4 class="max-w-[200px] font-semibold">
+                            Facebook News Feed
+                        </h4>
+                        <p class="text-lg text-zinc-300">
+                            Un algoritm alimentat de IA care selectează conținut
+                            pentru utilizatori în funcție de interesele și
+                            comportamentul lor pe platformă.
+                        </p>
+                    </div>
+                    <div class="num">04</div>
+                    <img
+                        src="../assets/24284456-pix-facebook.jpg"
+                        class=""
+                        alt=""
+                    />
+                    <div
+                        class="absolute inset-0 h-full w-full bg-black opacity-20"
+                    ></div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="carousel-box">
+                    <div class="title">
+                        <h4 class="max-w-[200px] font-semibold">Amazon Go</h4>
+                        <p class="text-lg text-zinc-300">
+                            Un magazin de alimente fără casier care utilizează
+                            vizualizarea computerizată și învățarea automată
+                            pentru a urmări clienții și produsele pe care le
+                            achiziționează.
+                        </p>
+                    </div>
+                    <div class="num">05</div>
+                    <img
+                        src="../assets/cms-image-000122458.jpeg"
+                        class=""
+                        alt=""
+                    />
+                    <div
+                        class="absolute inset-0 h-full w-full bg-black opacity-20"
+                    ></div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="title">
+                    <h4 class="max-w-[200px] font-semibold">
+                        Sistemul de recomandare Netflix
+                    </h4>
+                    <p class="text-lg text-zinc-300">
+                        un sistem alimentat de IA care sugerează filme și
+                        emisiuni TV în funcție de istoricul și preferințele de
+                        vizionare ale utilizatorilor.
+                    </p>
+                </div>
+                <div class="num">06</div>
+                <img
+                    src="../assets/dcl-650-Bx5-8M-y0sI-unsplash.jpg"
+                    class=""
+                    alt=""
+                />
+                <div
+                    class="absolute inset-0 h-full w-full bg-black opacity-20"
+                ></div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="carousel-box">
+                    <div class="title">
+                        <h4 class="max-w-[200px] font-semibold">
+                            Google Translate
+                        </h4>
+                        <p class="text-lg text-zinc-300">
+                            Un sistem de traducere a limbilor pe baza de IA care
+                            utilizează învățarea automată pentru a îmbunătăți
+                            acuratețea și fluiditatea traducerilor.
+                        </p>
+                    </div>
+                    <div class="num">07</div>
+                    <img src="../assets/google-translate.jpg" class="" alt="" />
+                    <div
+                        class="absolute inset-0 h-full w-full bg-black opacity-20"
+                    ></div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="carousel-box">
+                    <div class="title">
+                        <h4 class="max-w-[200px] font-semibold">OpenAI GPT</h4>
+                        <p class="text-lg text-zinc-300">
+                            Un model de limbaj care utilizează învățarea
+                            automată și procesarea limbajului natural (NLP)
+                            pentru a genera text similar cu cel creat de oameni.
+                        </p>
+                    </div>
+                    <div class="num">08</div>
+                    <img
+                        src="../assets/The-best-alternatives-to-ChatGPT.webp.webp"
+                        class=""
+                        alt=""
+                    />
+                    <div
+                        class="absolute inset-0 h-full w-full bg-black opacity-20"
+                    ></div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="carousel-box">
+                    <div class="title">
+                        <h4 class="max-w-[200px] font-semibold">Roomba</h4>
+                        <p class="text-lg text-zinc-300">
+                            Un robot aspirator care utilizează senzori și AI
+                            pentru a naviga în jurul casei și a curăța eficient.
+                        </p>
+                    </div>
+                    <div class="num">09</div>
+                    <img
+                        src="../assets/irobot-roomba-j7-review-4-of-12.jpg"
+                        class=""
+                        alt=""
+                    />
+                    <div
+                        class="absolute inset-0 h-full w-full bg-black opacity-20"
+                    ></div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="carousel-box">
+                    <div class="title">
+                        <h4 class="max-w-[200px] font-semibold">Midjourney</h4>
+                        <p class="text-lg text-zinc-300">
+                            O IA care poate genera fotografii complexe pe baza
+                            unui text, in functie de cereriile utilizatorilor
+                            (poza din spate fiind un exemplu)
+                        </p>
+                    </div>
+                    <div class="num">09</div>
+                    <img
+                        src="../assets/c0490a48-e997-4f38-918a-6a7aa2068ee9_1024x1024.jpg"
+                        class=""
+                        alt=""
+                    />
+                    <div
+                        class="absolute inset-0 h-full w-full bg-black opacity-20"
+                    ></div>
+                </div>
+            </div>
+        </section>
 
         <!-- third section -->
         <section
-            class="relative z-50 mx-6 mt-6 flex min-h-screen flex-col items-center justify-center gap-32 overflow-hidden bg-zinc-900 text-white"
+            class="relative mx-6 mt-4 flex min-h-screen flex-col items-center justify-center gap-32 overflow-hidden text-white"
         >
             <h2
                 class="z-30 mt-16 max-w-3xl text-center font-rajdhani text-4xl font-semibold text-pink-400"
@@ -236,11 +457,16 @@
                     <h3 class="font-rajdhani text-3xl font-semibold">
                         Educatie
                     </h3>
+
                     <p class="text-zinc-900">
-                        Ai ramas cu o intrebare in urma lectiei noi de la scoala
-                        sau a videoclipului care nu a explicat in amanunte un
-                        concept, o IA te va lamuri fara dar si poate...
+                        Foloseste IA pentru a avea raspuns la orice intrebare
+                        care are scop educativ
                     </p>
+                    <img
+                        class="go_to_test absolute right-5 top-5 h-5 w-6"
+                        src="../assets/next(1).png"
+                        alt=""
+                    />
                 </a>
                 <a
                     id="tabelas"
@@ -254,6 +480,11 @@
                         Ai nevoie de un tabel? Apeleaza la o IA care iti poate
                         genera tabelul pe care ti l-ai imaginat
                     </p>
+                    <img
+                        class="go_to_test absolute right-5 top-5 h-5 w-6"
+                        src="../assets/next(1).png"
+                        alt=""
+                    />
                 </a>
                 <a
                     id="medicina"
@@ -267,6 +498,11 @@
                         Te simti rau sau ai nevoie de un ajutor pentru a-ti
                         rezolva problemele personale, apeleaza la o IA...
                     </p>
+                    <img
+                        class="go_to_test absolute right-5 top-5 h-5 w-6"
+                        src="../assets/next(1).png"
+                        alt=""
+                    />
                 </a>
                 <a
                     id="arta"
@@ -275,15 +511,48 @@
                 >
                     <h3 class="font-rajdhani text-3xl font-semibold">Arta</h3>
                     <p class="text-zinc-900">
-                        Te-ai gandit vreodata ca locurile pe care le visezi sau
-                        peisajele pe care ti le imaginezi vor prinde viata. Acum
-                        acest lucru este posibil. Cum? Cu ajutorul IA...
+                        Testeaza o IA care iti poate genera o poza in functie de
+                        textul trimis.
                     </p>
+                    <img
+                        class="go_to_test absolute right-5 top-5 h-5 w-6"
+                        src="../assets/next(1).png"
+                        alt=""
+                    />
                 </a>
             </div>
         </section>
         <!-- footer -->
-        <footer>
+        <footer class="relative flex items-center justify-center">
+            <div
+                class="absolute bottom-8 z-50 flex flex-col items-center justify-center gap-4"
+            >
+                <span class="font-rajdhani text-lg text-white">
+                    Proiect realizat de Popica Beatrice
+                </span>
+                <div class="flex gap-2">
+                    <a
+                        href="https://github.com/popibeatrice"
+                        class="z-50 flex h-10 w-10 items-center justify-center rounded-3xl border-[1px] border-white"
+                    >
+                        <img
+                            src="../assets/github.png"
+                            class="h-7 w-7"
+                            alt=""
+                        />
+                    </a>
+                    <a
+                        href="https://www.youtube.com/channel/UCWywnBpKDfltRnQRONKatjA"
+                        class="z-50 flex h-10 w-10 items-center justify-center rounded-3xl border-[1px] border-white"
+                    >
+                        <img
+                            src="../assets/youtube.png"
+                            class="h-7 w-7"
+                            alt=""
+                        />
+                    </a>
+                </div>
+            </div>
             <article id="wrap">
                 <article id="lightings">
                     <section id="one">
