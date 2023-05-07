@@ -120,7 +120,6 @@ const getZindex = (array, index) =>
 
 const items = document.querySelectorAll(".carousel-item");
 const cursors = document.querySelectorAll(".cursor");
-const carousel = document.querySelector(".carousel");
 const displayItems = (item, index, active) => {
     const zIndex = getZindex([...items], active)[index];
     item.style.setProperty("--zIndex", zIndex);
