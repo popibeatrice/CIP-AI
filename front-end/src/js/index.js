@@ -182,6 +182,7 @@ document.addEventListener("touchend", handleMouseUp);
 
 // coursour colorat
 const blob = document.getElementById("blob");
+const blur = document.querySelector("#blur");
 document.body.onpointermove = (event) => {
     const { clientX, clientY } = event;
     blob.animate(
@@ -192,6 +193,13 @@ document.body.onpointermove = (event) => {
         { duration: 3000, fill: "forwards" }
     );
 };
+
+blur.style.height = window.innerHeight * 2 + "px";
+
+// listen for the window resize event and adjust the blur height accordingly
+window.addEventListener("resize", function () {
+    blur.style.height = window.innerHeight * 2 + "px";
+});
 
 // A PATRA SECTIUNE
 
