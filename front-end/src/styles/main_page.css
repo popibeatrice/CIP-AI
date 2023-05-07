@@ -521,7 +521,7 @@ h3 {
     height: 35px;
 }
 
-/* text */
+/* coursor */
 #blob {
     background-color: #fff;
     height: 500px;
@@ -537,6 +537,8 @@ h3 {
 #blur {
     width: 100%;
     height: 100%;
+    top: 0;
+    bottom: 0;
     position: fixed;
     backdrop-filter: blur(200px);
 }
