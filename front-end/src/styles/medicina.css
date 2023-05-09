@@ -489,3 +489,9 @@ h2 {
         rotate: 360deg;
     }
 }
+@media (max-height: 730px) {
+    #blob,
+    #blur {
+        display: none;
+    }
+}

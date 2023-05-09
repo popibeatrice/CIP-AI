@@ -89,6 +89,31 @@ const CreateResponse = (res) => {
             loading.classList.add("hidden");
         } catch (error) {
             console.log(error);
+            cartonas.classList.remove("hidden");
+            introductiveText.classList.remove("hidden");
+            loading.classList.add("hidden");
+            console.log(error);
+            console.log("hello");
+            loading.classList.add("hidden");
+            popCont.innerHTML = Popup;
+            const popColor = document.querySelector(".rectangle");
+            popColor.style.backgroundColor = "red";
+            popCont.style.opacity = "0.8";
+            const Text = document.querySelector("#popAddText");
+            Text.textContent = "Va rugam sa reincercati in 2 minute";
+            popCont.classList.add("duration-500");
+            setTimeout(() => {
+                popCont.style.opacity = ".6";
+            }, 2000);
+            setTimeout(() => {
+                popCont.style.opacity = ".4";
+            }, 2100);
+            setTimeout(() => {
+                popCont.style.opacity = ".2";
+            }, 2200);
+            setTimeout(() => {
+                popCont.style.opacity = "0";
+            }, 2300);
         }
     });
     section.appendChild(sendBackBtn);
@@ -141,7 +166,7 @@ form.addEventListener("submit", async (e) => {
     }
 });
 
-// implementation of chat gpt (front end)
+// bila luminoasa (front end)
 const blob = document.getElementById("blob");
 document.body.onpointermove = (event) => {
     const { clientX, clientY } = event;
@@ -153,3 +178,6 @@ document.body.onpointermove = (event) => {
         { duration: 3000, fill: "forwards" }
     );
 };
+// window.addEventListener("resize", function () {
+//     blur.style.height = window.innerHeight * 2 + "px";
+// });

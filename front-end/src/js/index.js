@@ -76,12 +76,14 @@ const menu = document.querySelector("#dropdown_menu");
 const dropdownList = document.querySelector("#dropdown_list");
 const body = document.querySelector("body");
 const menuSvg = document.querySelector(".ham");
+const html = document.querySelector("html");
 
 // resize if open
 addEventListener("resize", () => {
     if (window.screen.width >= 768 && menu.classList.contains("is_active")) {
         menu.classList.remove("is_active");
         menuSvg.classList.remove("active");
+        html.classList.remove("h-screen");
         body.classList.remove("h-screen", "overflow-hidden");
         dropdownList.classList.add("hidden");
     }
@@ -93,11 +95,13 @@ menu.addEventListener("click", () => {
     if (!menu.classList.contains("is_active")) {
         menu.classList.add("is_active");
         menuSvg.classList.add("active");
+        html.classList.add("h-screen");
         body.classList.add("h-screen", "overflow-hidden");
         dropdownList.classList.remove("hidden");
     } else {
         menu.classList.remove("is_active");
         menuSvg.classList.remove("active");
+        html.classList.remove("h-screen");
         body.classList.remove("h-screen", "overflow-hidden");
         dropdownList.classList.add("hidden");
     }
@@ -181,7 +185,7 @@ document.addEventListener("touchend", handleMouseUp);
 
 // coursour colorat
 const blob = document.getElementById("blob");
-const blur = document.querySelector("#blur");
+//const blur = document.querySelector("#blur");
 document.body.onpointermove = (event) => {
     const { clientX, clientY } = event;
     blob.animate(
@@ -193,12 +197,10 @@ document.body.onpointermove = (event) => {
     );
 };
 
-blur.style.height = window.innerHeight * 2 + "px";
-
 // listen for the window resize event and adjust the blur height accordingly
-window.addEventListener("resize", function () {
-    blur.style.height = window.innerHeight * 2 + "px";
-});
+// window.addEventListener("resize", function () {
+//     blur.style.height = window.innerHeight * 2 + "px";
+// });
 
 // A PATRA SECTIUNE
 

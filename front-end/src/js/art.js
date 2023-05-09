@@ -1,7 +1,6 @@
 import "../styles/index.css";
 import "../styles/art.css";
 import sendBack from "../assets/back.png";
-import downloadImage from "../assets/download.png";
 const axios = require("axios");
 
 const popCont = document.querySelector("#popup");
@@ -67,22 +66,10 @@ const CreateResponse = async (res) => {
 
     const download1 = document.createElement("a");
     download1.classList.add("absolute", "z-30", "hidden", "cursour-pointer");
-    const imgDownload1 = document.createElement("img");
-    imgDownload1["src"] = downloadImage;
-    imgDownload1.classList.add("w-14");
-    download1.appendChild(imgDownload1);
     const download2 = document.createElement("a");
     download2.classList.add("absolute", "z-30", "hidden", "cursour-pointer");
-    const imgDownload2 = document.createElement("img");
-    imgDownload2["src"] = downloadImage;
-    imgDownload2.classList.add("w-14");
-    download2.appendChild(imgDownload2);
     const download3 = document.createElement("a");
     download3.classList.add("absolute", "z-30", "hidden", "cursour-pointer");
-    const imgDownload3 = document.createElement("img");
-    imgDownload3["src"] = downloadImage;
-    imgDownload3.classList.add("w-14");
-    download3.appendChild(imgDownload3);
 
     const firstImg = document.createElement("img");
     container1.appendChild(firstImg);
@@ -92,18 +79,14 @@ const CreateResponse = async (res) => {
         "relative",
         "flex",
         "items-center",
-        "justify-center"
+        "justify-center",
+        "cursor-pointer"
     );
     firstImg.classList.add("duration-300", "relative");
     container1.appendChild(download1);
 
-    firstImg.addEventListener("mouseover", () => {
-        firstImg.classList.add("opacity-40");
-        download1.classList.remove("hidden");
-    });
-    firstImg.addEventListener("mouseout", () => {
-        firstImg.classList.remove("opacity-40");
-        download1.classList.add("hidden");
+    firstImg.addEventListener("click", () => {
+        window.open(firstImg.src);
     });
 
     const secondImg = document.createElement("img");
@@ -114,18 +97,14 @@ const CreateResponse = async (res) => {
         "relative",
         "flex",
         "items-center",
-        "justify-center"
+        "justify-center",
+        "cursor-pointer"
     );
     secondImg.classList.add("duration-300", "relative");
     container2.appendChild(download2);
 
-    secondImg.addEventListener("mouseover", () => {
-        secondImg.classList.add("opacity-40");
-        download2.classList.remove("hidden");
-    });
-    secondImg.addEventListener("mouseout", () => {
-        secondImg.classList.remove("opacity-40");
-        download2.classList.add("hidden");
+    secondImg.addEventListener("click", () => {
+        window.open(secondImg.src);
     });
 
     const thirdImg = document.createElement("img");
@@ -136,18 +115,13 @@ const CreateResponse = async (res) => {
         "relative",
         "flex",
         "items-center",
-        "justify-center"
+        "justify-center",
+        "cursor-pointer"
     );
     thirdImg.classList.add("duration-300", "relative");
-    container3.appendChild(download3);
 
-    thirdImg.addEventListener("mouseover", () => {
-        thirdImg.classList.add("opacity-40");
-        download3.classList.remove("hidden");
-    });
-    thirdImg.addEventListener("mouseout", () => {
-        thirdImg.classList.remove("opacity-40");
-        download3.classList.add("hidden");
+    thirdImg.addEventListener("click", () => {
+        window.open(thirdImg.src);
     });
 
     let promise1 = new Promise(function (resolve, reject) {
@@ -158,8 +132,6 @@ const CreateResponse = async (res) => {
                 resolve();
             };
             imgload1.src = `${res.data[0].url}`;
-            download1.href = `${res.data[0].url}`;
-            download1.download = `${res.data[0].url}`;
         } catch (error) {
             reject(error);
         }
@@ -172,8 +144,6 @@ const CreateResponse = async (res) => {
                 resolve();
             };
             imgload2.src = `${res.data[1].url}`;
-            download2.href = `${res.data[1].url}`;
-            download2.download = `${res.data[1].url}`;
         } catch (error) {
             reject(error);
         }
@@ -186,8 +156,6 @@ const CreateResponse = async (res) => {
                 resolve();
             };
             imgload3.src = `${res.data[2].url}`;
-            download3.href = `${res.data[2].url}`;
-            download3.download = `${res.data[2].url}`;
         } catch (error) {
             reject(error);
         }

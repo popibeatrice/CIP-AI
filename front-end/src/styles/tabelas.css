@@ -504,3 +504,9 @@ th {
         rotate: 360deg;
     }
 }
+@media (max-height: 730px) {
+    #blob,
+    #blur {
+        display: none;
+    }
+}
